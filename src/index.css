@@ -7,7 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.show-input {
+  display: block;
+  border-style: none;
+}
+.hide-input {
+  display: none;
+}
+
+.show-form {
+  display: block;
+}
+
+.hide-form {
+  display: none;
 }
