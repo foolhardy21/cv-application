@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const [number,setNumber] = useState('')
+  
+  const handleChange = (e) => {
+  
+    if(e.target.type == 'text') {
+  
+      setName(e.target.value)
+  
+    } else if(e.target.type == 'email') {
+  
+      setEmail(e.target.value)
+  
+    } else if(e.target.type == 'number') {
+  
+      setNumber(e.target.value)
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type='text' placeholder='Name...' onChange={handleChange} value={name} />
+      <input type='email' placeholder='Email...' onChange={handleChange} value={email} />
+      <input type='number' placeholder='PhoneNo...' onChange={handleChange} value={number} />
+      <p>{name}</p>
+      <p>{email}</p>
+      <p>{number}</p>
     </div>
   );
 }
