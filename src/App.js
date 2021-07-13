@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Title from './components/Title'
 import General from './components/General'
+import Education from "./components/Education";
 
 const App = () => {
   const [person, setPerson] = useState({
     name: '',
     email: '',
-    number: ''
+    number: '',
+    school: '',
+    schoolTitle: '',
+    schoolDuration: ''
   })
-  const [submit,setSubmit] = useState(false)
-  const [empty,setEmpty] = useState(false)
   
   const handleChange = (e) => {
     
@@ -24,40 +26,29 @@ const App = () => {
     } else if(e.target.name == 'numberInput') {
       
       setPerson( {...person,number:e.target.value} )
+    
+    } else if(e.target.name == 'schoolInput') {
+      
+      setPerson( {...person,school:e.target.value} )
+    
+    } else if(e.target.name == 'schoolTitleInput') {
+      
+      setPerson( {...person,schoolTitle:e.target.value} )
+    
+    } else if(e.target.name == 'schoolDurationInput') {
+      
+      setPerson( {...person,schoolDuration:e.target.value} )
+    
     }
+    
   }
-  const checkEmptyInputs = () => {
-    return ( !(person.name && person.number && person.email) ) ? true : false
-  }
-  const showErrorMessage = () => {
-      setEmpty(true)
-      setTimeout(() => {
-        setEmpty(false)
-      },2000)
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if( checkEmptyInputs() ) {
-      showErrorMessage()
-    } else { 
-      setSubmit(true)  
-    }
-  } 
-  const editForm = (e) => {
-    e.preventDefault()
-    setSubmit(false)
-  }
+  
 
   return (
     <div className="App">
       <Title />
-      <General 
-      person={person}
-      empty={empty}
-      submit={submit}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit} 
-      editForm={editForm} />       
+      <General {...person} handleChange={handleChange} />
+      <Education {...person} handleChange={handleChange} />  
     </div>
   );
 }

@@ -4,12 +4,12 @@ import InputField from './InputField'
 import SubmitButton from './SubmitButton'
 import EditButton from './EditButton'
 
-const General = ( {  name, email, number, handleChange } ) => {
-  const [submit,setSubmit] = useState(false)
-  const [empty,setEmpty] = useState(false)
+const Education = ({ school, schoolTitle, schoolDuration, handleChange  }) => {
+    const [submit,setSubmit] = useState(false)
+    const [empty,setEmpty] = useState(false)
   
   const checkEmptyInputs = () => {
-    return ( !(name && number && email) ) ? true : false
+    return ( !(school && schoolTitle && schoolDuration) ) ? true : false
   }
   const showErrorMessage = () => {
       setEmpty(true)
@@ -33,20 +33,20 @@ const General = ( {  name, email, number, handleChange } ) => {
     return (
         <section>
 
-        <SubTitle text = 'general information' />
+        <SubTitle text = 'education information' />
         
         <form onSubmit = {handleSubmit} >
           
           <p> {empty ? 'fields are empty' : ''} </p>
           
-          <InputField submit = {submit} property = {name} handleChange = {handleChange} 
-            inputName = 'nameInput' inputType = 'text' placeholder = 'Name...'
+          <InputField submit = {submit} property = {school} handleChange = {handleChange} 
+            inputName = 'schoolInput' inputType = 'text' placeholder = 'Schoolname...'
           />
-          <InputField submit = {submit} property = {email} handleChange = {handleChange} 
-            inputName = 'emailInput' inputType = 'email' placeholder = 'Email...'
+          <InputField submit = {submit} property = {schoolTitle} handleChange = {handleChange} 
+            inputName = 'schoolTitleInput' inputType = 'text' placeholder = 'Schooltitle...'
           />
-          <InputField submit = {submit} property = {number} handleChange = {handleChange} 
-            inputName = 'numberInput' inputType = 'number' placeholder = 'Phone...'
+          <InputField submit = {submit} property = {schoolDuration} handleChange = {handleChange} 
+            inputName = 'schoolDurationInput' inputType = 'number' placeholder = 'No of Years...'
           />
 
         <SubmitButton submit={submit} />
@@ -59,4 +59,4 @@ const General = ( {  name, email, number, handleChange } ) => {
     )
 }
 
-export default General
+export default Education
