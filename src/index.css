@@ -7,11 +7,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.show-input {
-  display: block;
-  border-style: none;
+.title {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 2rem;
 }
-.hide-input {
+section {
+  border-style: solid;
+  border-color: lightgreen;
+}
+section h3 {
+  text-transform: capitalize;
+  font-style: italic;
+  
+}
+.show {
+  display: block;
+  
+}
+.hide {
   display: none;
 }
 

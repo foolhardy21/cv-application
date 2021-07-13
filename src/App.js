@@ -1,77 +1,63 @@
 import React, { useState } from "react";
+import Title from './components/Title'
+import General from './components/General'
 
 const App = () => {
-  const [name,setName] = useState('')
-  const [email,setEmail] = useState('')
-  const [number,setNumber] = useState('')
+  const [person, setPerson] = useState({
+    name: '',
+    email: '',
+    number: ''
+  })
   const [submit,setSubmit] = useState(false)
-  const [edit,setEdit] = useState(true)
+  const [empty,setEmpty] = useState(false)
   
   const handleChange = (e) => {
     
-    setSubmit(false)
-    if(e.target.type == 'text') {
+    if(e.target.name == 'nameInput') {
+      
+      setPerson( {...person,name:e.target.value} )
   
-      setName(e.target.value)
+    } else if(e.target.name == 'emailInput') {
+      
+      setPerson( {...person,email:e.target.value} )
   
-    } else if(e.target.type == 'email') {
-  
-      setEmail(e.target.value)
-  
-    } else if(e.target.type == 'number') {
-  
-      setNumber(e.target.value)
+    } else if(e.target.name == 'numberInput') {
+      
+      setPerson( {...person,number:e.target.value} )
     }
+  }
+  const checkEmptyInputs = () => {
+    return ( !(person.name && person.number && person.email) ) ? true : false
+  }
+  const showErrorMessage = () => {
+      setEmpty(true)
+      setTimeout(() => {
+        setEmpty(false)
+      },2000)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setSubmit(true)
-    setEdit(false)
+    if( checkEmptyInputs() ) {
+      showErrorMessage()
+    } else { 
+      setSubmit(true)  
+    }
   } 
   const editForm = (e) => {
     e.preventDefault()
-    setEdit(true)
     setSubmit(false)
   }
+
   return (
     <div className="App">
-      <form onSubmit={handleSubmit} >
-        <input 
-        type='text' 
-        placeholder='Name' 
-        onChange={handleChange} 
-        value={name}
-        className={`${edit ? 'show-input' : 'hide-input'}`}
-        />
-        <input 
-        type='email' 
-        placeholder='Email' 
-        onChange={handleChange} 
-        value={email}
-        className={`${edit ? 'show-input' : 'hide-input'}`}
-         />
-        <input 
-        type='number' 
-        placeholder='PhoneNo' 
-        onChange={handleChange} 
-        value={number}
-        className={`${edit ? 'show-input' : 'hide-input'}`}
-         />
-        <button type='submit'>submit</button>
-        <button onClick={editForm}>edit</button>
-      </form>
-
-      <div className={`${submit ? 'show-form' : 'hide-form'}`}>
-        <div>
-          Name: {name}
-        </div>
-        <div>
-          Email: {email}
-        </div>
-        <div>
-          Phone: {number}
-        </div>
-      </div>
+      <Title />
+      <General 
+      person={person}
+      empty={empty}
+      submit={submit}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit} 
+      editForm={editForm} />       
     </div>
   );
 }
