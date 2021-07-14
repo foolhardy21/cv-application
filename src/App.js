@@ -20,49 +20,32 @@ const App = () => {
   
   const handleChange = (e) => {
     
-    if(e.target.name == 'nameInput') {
-      
-      setPerson( {...person,name:e.target.value} )
-  
-    } else if(e.target.name == 'emailInput') {
-      
-      setPerson( {...person,email:e.target.value} )
-  
-    } else if(e.target.name == 'numberInput') {
-      
-      setPerson( {...person,number:e.target.value} )
-    
-    } else if(e.target.name == 'schoolInput') {
-      
-      setPerson( {...person,school:e.target.value} )
-    
-    } else if(e.target.name == 'schoolTitleInput') {
-      
-      setPerson( {...person,schoolTitle:e.target.value} )
-    
-    } else if(e.target.name == 'schoolDurationInput') {
-      
-      setPerson( {...person,schoolDuration:e.target.value} )
-    
-    } else if(e.target.name == 'companyInput') {
-      
-      setPerson( {...person,company:e.target.value} )
-    
-    } else if(e.target.name == 'companyTitleInput') {
-      
-      setPerson( {...person,companyTitle:e.target.value} )
-    
-    } else if(e.target.name == 'domainInput') {
-      
-      setPerson( {...person,domain:e.target.value} )
-    
-    } else if(e.target.name == 'companyDurationInput') {
-      
-      setPerson( {...person,companyDuration:e.target.value} )
-    
+    switch(e.target.name) {
+      case 'nameInput': setPerson( {...person,name:e.target.value} )
+                        break
+      case 'emailInput': setPerson( {...person,email:e.target.value} )
+                        break
+      case 'numberInput': setPerson( {...person,number:e.target.value} )
+                        break
+      case 'schoolInput': setPerson( {...person,school:e.target.value} )
+                        break
+      case 'schoolTitleInput': setPerson( {...person,schoolTitle:e.target.value} )
+                        break
+      case 'schoolDurationInput': setPerson( {...person,schoolDuration:e.target.value} )
+                        break
+      case 'companyInput': setPerson( {...person,company:e.target.value} )
+                        break
+      case 'companyTitleInput': setPerson( {...person,companyTitle:e.target.value} )
+                        break
+      case 'domainInput': setPerson( {...person,domain:e.target.value} )
+                        break
+      case 'companyDurationInput': setPerson( {...person,companyDuration:e.target.value} )
+                        break
+       
     }
     
   }
+  
   const checkEmptyInputs = (...args) => {
     for(let i = 0; i < args.length; i++) {
       if(!args[i]) {
