@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Title from './components/Title'
 import General from './components/General'
 import Education from "./components/Education";
+import WorkEx from "./components/WorkEx";
 
 const App = () => {
   const [person, setPerson] = useState({
@@ -10,7 +11,11 @@ const App = () => {
     number: '',
     school: '',
     schoolTitle: '',
-    schoolDuration: ''
+    schoolDuration: '',
+    company: '',
+    companyTitle: '',
+    domain: '',
+    companyDuration: ''
   })
   
   const handleChange = (e) => {
@@ -39,6 +44,22 @@ const App = () => {
       
       setPerson( {...person,schoolDuration:e.target.value} )
     
+    } else if(e.target.name == 'companyInput') {
+      
+      setPerson( {...person,company:e.target.value} )
+    
+    } else if(e.target.name == 'companyTitleInput') {
+      
+      setPerson( {...person,companyTitle:e.target.value} )
+    
+    } else if(e.target.name == 'domainInput') {
+      
+      setPerson( {...person,domain:e.target.value} )
+    
+    } else if(e.target.name == 'companyDurationInput') {
+      
+      setPerson( {...person,companyDuration:e.target.value} )
+    
     }
     
   }
@@ -48,7 +69,8 @@ const App = () => {
     <div className="App">
       <Title />
       <General {...person} handleChange={handleChange} />
-      <Education {...person} handleChange={handleChange} />  
+      <Education {...person} handleChange={handleChange} /> 
+      < WorkEx {...person} handleChange={handleChange} /> 
     </div>
   );
 }
