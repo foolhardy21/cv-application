@@ -76,9 +76,9 @@ const App = () => {
   return (
     <div className="App">
       <Title />
-      <General name={person.name} email={person.email} number={person.number} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} />
-      <Education school={person.school} schoolTitle={person.schoolTitle} schoolDuration={person.schoolDuration} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
-      < WorkEx company={person.company} companyTitle={person.companyTitle} domain={person.domain} companyDuration={person.companyDuration} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
+      <General {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} />
+      <Education {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
+      < WorkEx {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
     </div>
   );
 }
