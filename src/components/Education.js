@@ -4,13 +4,10 @@ import InputField from './InputField'
 import SubmitButton from './SubmitButton'
 import EditButton from './EditButton'
 
-const Education = ({ school, schoolTitle, schoolDuration, handleChange  }) => {
-    const [submit,setSubmit] = useState(false)
-    const [empty,setEmpty] = useState(false)
+const Education = ({ school, schoolTitle, schoolDuration, handleChange, checkEmptyInputs  }) => {
+  const [submit,setSubmit] = useState(false)
+  const [empty,setEmpty] = useState(false)
   
-  const checkEmptyInputs = () => {
-    return ( !(school && schoolTitle && schoolDuration) ) ? true : false
-  }
   const showErrorMessage = () => {
       setEmpty(true)
       setTimeout(() => {
@@ -19,7 +16,7 @@ const Education = ({ school, schoolTitle, schoolDuration, handleChange  }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    if( checkEmptyInputs() ) {
+    if( checkEmptyInputs(school, schoolTitle, schoolDuration) ) {
       showErrorMessage()
     } else { 
       setSubmit(true)  

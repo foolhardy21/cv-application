@@ -63,14 +63,22 @@ const App = () => {
     }
     
   }
+  const checkEmptyInputs = (...args) => {
+    for(let i = 0; i < args.length; i++) {
+      if(!args[i]) {
+        return true
+      }
+    }
+    return false
+  }
   
 
   return (
     <div className="App">
       <Title />
-      <General {...person} handleChange={handleChange} />
-      <Education {...person} handleChange={handleChange} /> 
-      < WorkEx {...person} handleChange={handleChange} /> 
+      <General {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} />
+      <Education {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
+      < WorkEx {...person} handleChange={handleChange} checkEmptyInputs={checkEmptyInputs} /> 
     </div>
   );
 }

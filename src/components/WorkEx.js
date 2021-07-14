@@ -4,13 +4,10 @@ import InputField from './InputField'
 import SubmitButton from './SubmitButton'
 import EditButton from './EditButton'
 
-const WorkEx = ({ company, companyTitle, domain, companyDuration, handleChange }) => {
-    const [submit,setSubmit] = useState(false)
-    const [empty,setEmpty] = useState(false)
-  
-  const checkEmptyInputs = () => {
-    return ( !(company && companyTitle && domain && companyDuration) ) ? true : false
-  }
+const WorkEx = ({ company, companyTitle, domain, companyDuration, handleChange, checkEmptyInputs }) => {
+  const [submit,setSubmit] = useState(false)
+  const [empty,setEmpty] = useState(false)
+    
   const showErrorMessage = () => {
       setEmpty(true)
       setTimeout(() => {
@@ -19,7 +16,7 @@ const WorkEx = ({ company, companyTitle, domain, companyDuration, handleChange }
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    if( checkEmptyInputs() ) {
+    if( checkEmptyInputs(company, companyTitle, domain, companyDuration) ) {
       showErrorMessage()
     } else { 
       setSubmit(true)  

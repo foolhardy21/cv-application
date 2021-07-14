@@ -4,13 +4,11 @@ import InputField from './InputField'
 import SubmitButton from './SubmitButton'
 import EditButton from './EditButton'
 
-const General = ( {  name, email, number, handleChange } ) => {
+const General = ( {  name, email, number, handleChange, checkEmptyInputs } ) => {
   const [submit,setSubmit] = useState(false)
   const [empty,setEmpty] = useState(false)
   
-  const checkEmptyInputs = () => {
-    return ( !(name && number && email) ) ? true : false
-  }
+  
   const showErrorMessage = () => {
       setEmpty(true)
       setTimeout(() => {
@@ -19,7 +17,7 @@ const General = ( {  name, email, number, handleChange } ) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    if( checkEmptyInputs() ) {
+    if( checkEmptyInputs(name, email, number) ) {
       showErrorMessage()
     } else { 
       setSubmit(true)  
